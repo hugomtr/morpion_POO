@@ -1,3 +1,5 @@
+require 'pry'
+
 class Player 
   attr_accessor :name, :symbol
 
@@ -39,7 +41,7 @@ class Player
 ║  ║ ║║║║║║║║╣ ║║║║  ║╣ 
 ╚═╝╚═╝╩ ╩╩ ╩╚═╝╝╚╝╚═╝╚═╝
 ________________________"
-      sleep(1)
+      sleep(3)
       return player2=Player.new(input_name2,'O')
   end
   

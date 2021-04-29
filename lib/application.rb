@@ -1,38 +1,41 @@
-#cette classe va nous permettre de lancer le jeu. Elle va faire une boucle infinie de parties 
-#(on joue tant que les joueurs veulent continuer) et lancer l'instanciation d'un Game.
 require_relative 'show'
 require_relative 'game'
 
-require 'bundler'
-Bundler.require
-
-
-
 class Application
-  attr_accessor :game 
+  attr_accessor :game, :players
   def initialize
-    @game= Game.new
+    @game=Game.new
+    @game.add_players
   end
   
+  
+  
+  app=Application.new  
 
   def show_game
-    Show.display_info_board
-    self.game.add_players #ajout des joueurs et attrinutions des symboles
     while true
-      game1 = Game.new
-      round=0
-      while !(self.game.end_game?)
-        round+=1
-        display        ## utiliser un break if
+      show=Show.new
+      show.presentation
+      show.display_info_board
+      loop do
         self.game.turn_player2
-        display
+        if self.game.end_game? == true
+          puts self.game.end_game?
+          break 
+        end
         self.game.turn_player1
+        if self.game.end_game? == true
+          puts self.game.end_game?
+          break 
+        end
       end
-      #Show.menu#menu pour quitter démarrer une partie etc..
+      break if show.menu == "q"
     end
+    system ("clear")
+    puts "Vous êtes sorti du jeu"
   end
-
+  
+  app.show_game
 
 end
   
-binding.pry

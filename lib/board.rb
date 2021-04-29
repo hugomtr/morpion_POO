@@ -1,5 +1,3 @@
-require 'bundler'
-Bundler.require
 
 require_relative 'player'
 require_relative 'board_case'
@@ -165,8 +163,6 @@ class Board < BoardCase
 
 end
 
-    
-binding.pry
 
 
 

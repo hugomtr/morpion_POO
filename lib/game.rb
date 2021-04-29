@@ -8,6 +8,7 @@ require_relative 'player'
 require_relative 'show'
 require 'pry'
 
+
 class Game 
   attr_accessor :board, :players
   
@@ -39,9 +40,9 @@ class Game
   def end_game?
     if self.board.verify_column || self.board.verify_diagonal || self.board.verify_row 
       if 9-self.board.cases_left % 2 == 0
-        current_player_name=self.players[1].name
-      else
         current_player_name=self.players[0].name
+      else
+        current_player_name=self.players[1].name
       end
       system('clear')
       puts "______________
@@ -58,7 +59,7 @@ class Game
 ║ ╦╠═╣║ ╦║║║║╣ 
 ╚═╝╩ ╩╚═╝╝╚╝╚═╝
 ______________"
-
+      sleep(3)
       return true
     system('clear')
     elsif self.board.cases_left == 0
@@ -74,6 +75,7 @@ ______________"
              ║║║║╣   ║ ╦╠═╣║ ╦║║║║╣ 
              ╝╚╝╚═╝  ╚═╝╩ ╩╚═╝╝╚╝╚═╝
 _________________________________________________"
+      sleep(3)
       return true
     end
     return false
