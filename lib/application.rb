@@ -3,32 +3,36 @@
 require_relative 'show'
 require_relative 'game'
 
+require 'bundler'
+Bundler.require
+
+
 
 class Application
-  attr_accessor :game :show
-  def initialize(game)
-    @game=game
+  attr_accessor :game 
+  def initialize
+    @game= Game.new
   end
   
 
   def show_game
     Show.display_info_board
-    game1.add_players #ajout des joueurs et attrinutions des symboles
-  while true
+    self.game.add_players #ajout des joueurs et attrinutions des symboles
+    while true
       game1 = Game.new
       round=0
-      while !end_game?
+      while !(self.game.end_game?)
         round+=1
-        #display
-        game1.turn_player1
-        
-        game1.turn_player2
+        display        ## utiliser un break if
+        self.game.turn_player2
+        display
+        self.game.turn_player1
       end
-      game1.switch_players
-      Show.menu#menu pour quitter démarrer une partie etc..
+      #Show.menu#menu pour quitter démarrer une partie etc..
     end
   end
 
 
 end
-    
+  
+binding.pry

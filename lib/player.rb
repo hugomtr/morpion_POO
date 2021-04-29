@@ -1,7 +1,3 @@
-#ce sont les joueurs. Il doit y avoir 2 instances de cette classe lors d'une partie.
-require 'bundler'
-Bundler.require
-
 class Player 
   attr_accessor :name, :symbol
 
@@ -11,21 +7,23 @@ class Player
   end
 
   def self.add_first_player
+    system('clear')
     puts "Please Enter your name"
     print"> "
     input_name1 = gets.chomp
     puts "Thanks you will have the Symbol 'X'"
-    sleep(1)
+    sleep(2)
     puts "Bienvenue #{input_name1}"
     return player1=Player.new(input_name1,'X')
   end
 
   def self.add_second_player
+    system('clear')
     puts "\n\n\nPlease Enter your name"
     print"> "
     input_name2=gets.chomp
     puts "Thanks you will Have the Symbol 'O'"
-    sleep(1)
+    sleep(2)
     puts "Bienvenue #{input_name2}"
     puts "________________________
 ╔═╗╗╔═╗╔═╗╔╦╗
@@ -44,8 +42,7 @@ ________________________"
       sleep(1)
       return player2=Player.new(input_name2,'O')
   end
-
-
+  
   def select_a_board_case
     arr=[]
     puts "Enter the case"
@@ -88,18 +85,15 @@ ________________________"
       **********************
    !!!! de 'A1' à 'C3' !!!!
       **********************
-___________________________________"
+Rentre une case Valide:"
+      print "> "
       input_board_case = gets.chomp.upcase
     end
     arr << input_board_case
     arr << self.symbol  #symbole joueur
     return arr
   end
-  
-  
-
 end
-binding.pry
 
 
     

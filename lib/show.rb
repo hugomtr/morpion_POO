@@ -1,8 +1,3 @@
-#cette classe sera une sorte de view. Elle affichera l'état du plateau de jeu à un instant T.
-require 'bundler'
-
-Bundler.require
-
 
 class Show 
   def initialize
@@ -21,7 +16,9 @@ class Show
     puts "'A1' for top left corners 'C3' for bottom right corners ... "
   end
 
-  #def display_board
+
+
+
   
   #def menu
     #def play_again

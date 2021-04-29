@@ -11,11 +11,10 @@ class BoardCase
     @B3=" "
     @C3=" "
   end
-
+#fonctions pour modifier les valeurs du tableau
   def A1=(a1)
     @A1=a1
   end
-
   def A2=(a2)
     @A2=a2
   end
@@ -40,7 +39,35 @@ class BoardCase
   def C3=(c3)
     @C3=c3
   end
-  
+#fonctions pour renvoyer les valeurs du tableau
+  def get_A1
+    return @A1
+  end
+  def get_A2
+  return @A2
+  end
+  def get_A3
+    return @A3
+  end
+  def get_B1
+    return @B1
+  end
+  def get_B2
+    return @B2
+  end
+  def get_B3
+    return @B3
+  end
+  def get_C1    
+    return @C1
+  end
+  def get_C2
+    return @C2
+  end
+  def get_C3
+    return @C3
+  end 
+
   def cases_left
     i=0
     [@A1,@A2,@A3,@B1,@B2,@B3,@C1,@C2,@C3].each do |value|

@@ -23,28 +23,28 @@ class Game
   end
   
   def turn_player1
-    #display_board
+    self.board.display_board
     puts "It's player1's turn to play"
-    case_selected = self.players[1].select_a_board_case[0]
-    self.board.choice_player(choix_joueur1,"X")
+    case_selected = self.players[0].select_a_board_case[0]
+    self.board.choice_player(case_selected,"X")
   end
   
   def turn_player2
-    #display_board
+    self.board.display_board
     puts "It's player2's turn to play"
-    case_selected = self.players[0].select_a_board_case[0]
+    case_selected = self.players[1].select_a_board_case[0]
     self.board.choice_player(case_selected,"O")
   end
   
   def end_game?
-    if verify_column || verify_diagonal || verify_row 
-      if 9-self.board.board_case.cases_left % 2 == 0
+    if self.board.verify_column || self.board.verify_diagonal || self.board.verify_row 
+      if 9-self.board.cases_left % 2 == 0
         current_player_name=self.players[1].name
       else
         current_player_name=self.players[0].name
       end
       system('clear')
-      return "______________
+      puts "______________
 ╔╗ ╦═╗╔═╗╦  ╦╔═╗
 ╠╩╗╠╦╝╠═╣╚╗╔╝║ ║
 ╚═╝╩╚═╩ ╩ ╚╝ ╚═╝
@@ -58,32 +58,12 @@ class Game
 ║ ╦╠═╣║ ╦║║║║╣ 
 ╚═╝╩ ╩╚═╝╝╚╝╚═╝
 ______________"
-system('clear')
-    elsif self.board.board_case.cases_left
-      return "_________________________________________________
-                                                  
-                     'cxOOxc'                     
-                  ':d0NWWWWNKxc'                  
-                ;oONWWWWWWWWWWN0d:'               
-             ;oOXWWWNOdddoodkXWWWN0d:             
-          ;lkXWWWWNOookK0kdollxXWWWWXOo;          
-       ,lkXWWWWWWNxckNWWXOkdxd:lKWWWWWWXOo;       
-    ,ckKWWWWWWWWNdc0WWWWXOxdddo;:KWWWWWWWWXkl,    
- 'cxKNWWWWWWWWWNd:kXK0OOxdlcllol;cKWWWWWWWWWWKkc, 
-'dNWWWWWWWWWWWWk,,;;clcccccccc;'''lXWWWWWWWWWWWWk,
- cXWWWWWWWWWWWXl   'xNWWKkKNW0;   ,OWWWWWWWWWWWNo 
-  dNWWWWWWWWWWWKl'  ;OWWNXXWXl   ;kNWWWWWWWWWWWk' 
-  ,OWWWWWWWWWN0d:    ,ldxkxo:    ,oOXWWWWWWWWW0;  
-   cXWWWWWWWKl'''''''''''''''''''''';kNWWWWWWNl   
-    dNWWWWWK: ,kKKKK0KKK00K00K0KKK0c 'kWWWWWWx'   
-    ,OWWWWXl  ;0WWWWWWWWWWWWWNWWWWNl  ;OWWWW0;    
-     cKWWNd'  ,OWWWWKkkO0X0kOkONWWXl   cKWWXl     
-      dNWXc   ,OWWWWNkOkx0xldO0NWWXc   'kWWx'     
-      ,OWNx,  'kWWWWNXXXXWNKKWWWWWK:   lXM0;      
-       ;dxdc' 'xXXXXXXXXXXXXXXXXXX0;  ;oxd:       
-        :kOO0d,:ooooooooooooooooooc,cOOOOc        
-        ,kWWWXdodddddddddddddddddxdo0WWW0;        
-         ;dxxxxxxxxxxxxxxxxxxxxxxxxxxxxx:         
+
+      return true
+    system('clear')
+    elsif self.board.cases_left == 0
+      puts "_________________________________________________
+
               ╔═╗╔═╗╔═╗╦  ╦╔╦╗╔═╗   
               ║╣ ║ ╦╠═╣║  ║ ║ ║╣    
               ╚═╝╚═╝╩ ╩╩═╝╩ ╩ ╚═╝   
@@ -94,7 +74,9 @@ system('clear')
              ║║║║╣   ║ ╦╠═╣║ ╦║║║║╣ 
              ╝╚╝╚═╝  ╚═╝╩ ╩╚═╝╝╚╝╚═╝
 _________________________________________________"
+      return true
     end
+    return false
   end
 
   def menu
