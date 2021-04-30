@@ -6,7 +6,6 @@ Bundler.require
 require_relative 'board'
 require_relative 'player'
 require_relative 'show'
-require 'pry'
 
 
 class Game 
@@ -87,4 +86,3 @@ _________________________________________________"
   end
 end
 
-binding.pry

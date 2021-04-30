@@ -8,24 +8,21 @@ class Application
     @game.add_players
   end
   
-  
-  
-  app=Application.new  
-
   def show_game
     while true
-      show=Show.new
+      app=Application.new
+      show = Show.new
       show.presentation
       show.display_info_board
       loop do
-        self.game.turn_player2
-        if self.game.end_game? == true
-          puts self.game.end_game?
+        app.game.turn_player2
+        if app.game.end_game? == true
+          puts app.game.end_game?
           break 
         end
-        self.game.turn_player1
-        if self.game.end_game? == true
-          puts self.game.end_game?
+        app.game.turn_player1
+        if app.game.end_game? == true
+          puts app.game.end_game?
           break 
         end
       end
@@ -34,8 +31,6 @@ class Application
     system ("clear")
     puts "Vous êtes sorti du jeu"
   end
-  
-  app.show_game
 
 end
   
